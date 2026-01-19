@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 18% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 18% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 173 80% 50%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 173 80% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 173 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(173 80% 50%) 0%, hsl(190 80% 45%) 50%, hsl(210 80% 60%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(280 60% 55%) 0%, hsl(320 70% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 10%) 0%, hsl(220 18% 6%) 100%);
+    --glow-primary: 0 0 40px hsl(173 80% 50% / 0.3);
+    --glow-accent: 0 0 60px hsl(173 80% 50% / 0.15);
+    
+    /* Category colors */
+    --billing: 173 80% 50%;
+    --technical: 280 60% 55%;
+    --refund: 45 90% 55%;
+    --cancellation: 0 70% 55%;
+    --product: 210 80% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 4%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glow-effect {
+    box-shadow: var(--glow-primary);
+  }
+
+  .card-glow:hover {
+    box-shadow: var(--glow-accent);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  .category-billing { color: hsl(var(--billing)); }
+  .category-technical { color: hsl(var(--technical)); }
+  .category-refund { color: hsl(var(--refund)); }
+  .category-cancellation { color: hsl(var(--cancellation)); }
+  .category-product { color: hsl(var(--product)); }
+
+  .bg-category-billing { background-color: hsl(var(--billing) / 0.15); border-color: hsl(var(--billing) / 0.3); }
+  .bg-category-technical { background-color: hsl(var(--technical) / 0.15); border-color: hsl(var(--technical) / 0.3); }
+  .bg-category-refund { background-color: hsl(var(--refund) / 0.15); border-color: hsl(var(--refund) / 0.3); }
+  .bg-category-cancellation { background-color: hsl(var(--cancellation) / 0.15); border-color: hsl(var(--cancellation) / 0.3); }
+  .bg-category-product { background-color: hsl(var(--product) / 0.15); border-color: hsl(var(--product) / 0.3); }
+}
