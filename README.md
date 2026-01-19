@@ -1,6 +1,6 @@
 📌 Project Overview
 
-This project focuses on automatically classifying customer support tickets into predefined categories using Natural Language Processing (NLP) and machine learning. The goal is to reduce manual effort in ticket routing and improve response efficiency.
+This project focuses on automatically classifying customer support tickets into predefined categories using  machine learning. The goal is to reduce manual effort in ticket routing and improve response efficiency.
 
 A complete end-to-end pipeline was implemented, including text preprocessing, feature extraction using TF-IDF, model training, evaluation, and result reporting.
 
